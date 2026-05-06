@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIELSENSI - Sensi Capudo R$ 4,99</title>
+<title>BIELSENSI - Sensi Capudo</title>
 
 <!-- Preview WhatsApp -->
-<meta property="og:title" content="BIELSENSI - Sensi Capudo R$ 4,99">
-<meta property="og:description" content="Sensi atualizada pra Android, iOS e Emulador. Cola capa fácil! 🔥">
+<meta property="og:title" content="BIELSENSI - Sensi Capudo">
+<meta property="og:description" content="Sensi atualizada pra Android, iOS e Emulador. Método exclusivo! 🔥">
 <meta property="og:image" content="https://i.imgur.com/8QzXqXk.png">
 <meta property="og:url" content="https://seusite.github.io/BIELSENSI/">
 
@@ -26,12 +26,15 @@ header{text-align:center;padding:30px 0}
 .plataformas{display:flex;gap:10px;margin:25px 0}
 .plat-btn{flex:1;padding:12px;border:2px solid #2a2a4a;background:#0f0f1e;color:#888;border-radius:10px;cursor:pointer;font-weight:bold;transition:.3s}
 .plat-btn.ativo{border-color:#ff0000;color:#ff0000;background:#ff000010}
-.sensi-box{background:#0f0f1e;border:2px solid #2a2a4a;border-radius:15px;padding:20px;margin:20px 0;text-align:left}
-.sensi-box h3{color:#ff6600;margin-bottom:15px;text-align:center}
-.sensi-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #2a2a4a;font-size:15px}
-.sensi-item:last-child{border-bottom:none}
-.sensi-item span:first-child{color:#aaa}
-.sensi-item span:last-child{color:#00ff88;font-weight:bold}
+.sensi-box{background:#0f0f1e;border:2px solid #2a2a4a;border-radius:15px;padding:20px;margin:20px 0;text-align:center}
+.sensi-box h3{color:#ff6600;margin-bottom:15px}
+.bloqueado{font-size:60px;margin:20px 0}
+.bloqueado-texto{color:#ff4444;font-size:16px;font-weight:bold;margin-bottom:15px}
+.bloqueado-sub{color:#888;font-size:13px}
+.metodo{background:#ff660010;border:2px solid #ff6600;border-radius:15px;padding:20px;margin:20px 0;text-align:left}
+.metodo h3{color:#ff6600;margin-bottom:12px;text-align:center}
+.metodo li{padding:6px 0;font-size:14px;color:#ddd;list-style:none}
+.metodo li::before{content:'🔥 ';margin-right:5px}
 .form-section{margin-top:25px}
 .input-group{margin-bottom:15px;text-align:left}
 .input-group label{display:block;margin-bottom:5px;font-size:14px;color:#aaa}
@@ -55,12 +58,12 @@ footer{text-align:center;padding:30px 0;color:#555;font-size:12px}
 <div class="card">
 <h2>PACK SENSI CAPUDO</h2>
 
-<div class="preco">R$ <span class="valor">4</span><span class="centavos">,99</span></div>
+<div class="preco">R$ <span class="valor" id="precoValor">4</span><span class="centavos">,99</span></div>
 
 <ul class="beneficios">
-<li>Sensi pra Android, iOS e Emulador</li>
-<li>Configuração testada por BIELSENSI</li>
+<li>Sensi exclusiva BIELSENSI</li>
 <li>Entrega automática após pagamento</li>
+<li>Método de treino incluso</li>
 <li>Suporte via WhatsApp</li>
 <li>Atualização grátis por 30 dias</li>
 </ul>
@@ -71,12 +74,25 @@ footer{text-align:center;padding:30px 0;color:#555;font-size:12px}
 <button class="plat-btn" onclick="trocarPlat('emu')">EMULADOR</button>
 </div>
 
-<div class="sensi-box" id="sensiDisplay"></div>
+<div class="sensi-box">
+<h3 id="tituloPlat">BIELSENSI ANDROID</h3>
+<div class="bloqueado">🔒</div>
+<div class="bloqueado-texto">CONTEÚDO BLOQUEADO</div>
+<div class="bloqueado-sub">Compre agora pra liberar a sensi completa + método de treino</div>
+</div>
+
+<div class="metodo">
+<h3>MÉTODO BIELSENSI INCLUSO</h3>
+<li>Treino de 10min pra acostumar com a sensi</li>
+<li>Posição de dedo que gruda a mira</li>
+<li>Como ajustar DPI pra ficar perfeito</li>
+<li>Truque pra puxar capa no automático</li>
+</div>
 
 <div class="form-section">
 <div class="input-group"><label>Seu Nome</label><input type="text" id="nome" placeholder="Nome pra receber a sensi" required></div>
 <div class="input-group"><label>Seu Email</label><input type="email" id="email" placeholder="Email pra entrega automática" required></div>
-<button class="btn-comprar" onclick="comprarSensi()">COMPRAR AGORA</button>
+<button class="btn-comprar" onclick="comprarSensi()">LIBERAR SENSI AGORA</button>
 </div>
 
 </div>
@@ -85,46 +101,22 @@ footer{text-align:center;padding:30px 0;color:#555;font-size:12px}
 
 <script>
 // ===== CONFIGURAÇÕES QUE VOCÊ MUDA =====
-const LINK_CAKTO = "https://pay.cakto.com.br/SEU_LINK_AQUI"; // COLOCA SEU LINK DA CAKTO AQUI
-const WHATSAPP = "5577981047147"; // Seu número pra suporte
-// =======================================
-
-// SENSIS BIELSENSI - ATUALIZADAS SET/2026
-const SENSIS = {
-android: {
-titulo: "BIELSENSI ANDROID",
-geral: 100,
-red: 98,
-x2: 95,
-x4: 93,
-awm: 88,
-botao: 52,
-dpi: "650-700",
-tamanho: 59
-},
-ios: {
-titulo: "BIELSENSI IPHONE",
-geral: 100,
-red: 100,
-x2: 97,
-x4: 95,
-awm: 90,
-botao: 48,
-dpi: "Nativo",
-tamanho: 55
-},
-emu: {
-titulo: "BIELSENSI EMULADOR",
-geral: 100,
-red: 100,
-x2: 98,
-x4: 96,
-awm: 92,
-botao: 50,
-dpi: "1600",
-tamanho: 65
-}
+// LINKS DA CAKTO - CRIA 3 PRODUTOS DIFERENTES
+const LINKS_CAKTO = {
+android: "https://pay.cakto.com.br/SEU_LINK_ANDROID",
+ios: "https://pay.cakto.com.br/SEU_LINK_IOS",
+emu: "https://pay.cakto.com.br/SEU_LINK_EMULADOR"
 };
+
+// PREÇOS DIFERENTES PRA CADA PLATAFORMA
+const PRECOS = {
+android: "4,99",
+ios: "5,99",
+emu: "6,99"
+};
+
+const WHATSAPP = "5577981047147";
+// =======================================
 
 let platAtual = 'android';
 
@@ -132,24 +124,19 @@ function trocarPlat(plat) {
 platAtual = plat;
 document.querySelectorAll('.plat-btn').forEach(btn => btn.classList.remove('ativo'));
 event.target.classList.add('ativo');
-mostrarSensi();
-}
 
-function mostrarSensi() {
-const s = SENSIS[platAtual];
-document.getElementById('sensiDisplay').innerHTML = `
-<h3>${s.titulo}</h3>
-<div class="sensi-item"><span>Geral</span><span>${s.geral}</span></div>
-<div class="sensi-item"><span>Ponto Vermelho</span><span>${s.red}</span></div>
-<div class="sensi-item"><span>Mira 2X</span><span>${s.x2}</span></div>
-<div class="sensi-item"><span>Mira 4X</span><span>${s.x4}</span></div>
-<div class="sensi-item"><span>Mira AWM</span><span>${s.awm}</span></div>
-<div class="sensi-item"><span>Botão de Tiro</span><span>${s.botao}</span></div>
-<div class="sensi-item"><span>DPI Recomendado</span><span>${s.dpi}</span></div>
-<div class="sensi-item"><span>Tamanho do Botão</span><span>${s.tamanho}</span></div>
-`;
+// Muda o preço
+document.getElementById('precoValor').innerText = PRECOS[plat].split(',')[0];
+document.querySelector('.centavos').innerText = ',' + PRECOS[plat].split(',')[1];
+
+// Muda o título
+const titulos = {
+android: "BIELSENSI ANDROID",
+ios: "BIELSENSI IPHONE",
+emu: "BIELSENSI EMULADOR"
+};
+document.getElementById('tituloPlat').innerText = titulos[plat];
 }
-mostrarSensi();
 
 function comprarSensi() {
 const nome = document.getElementById('nome').value.trim();
@@ -158,7 +145,8 @@ const email = document.getElementById('email').value.trim();
 if (nome.length < 3) return alert('Digite seu nome completo');
 if (!email.includes('@')) return alert('Digite um email válido');
 
-window.open(`${LINK_CAKTO}?name=${encodeURIComponent(nome)}&email=${encodeURIComponent(email)}&plat=${platAtual}`, '_blank');
+// Manda pro link da Cakto certo da plataforma
+window.open(`${LINKS_CAKTO[platAtual]}?name=${encodeURIComponent(nome)}&email=${encodeURIComponent(email)}`, '_blank');
 }
 </script>
 </body>
